@@ -1,0 +1,9 @@
+language: csharp
+dist: bionic
+sudo: required
+mono: none
+dotnet: 2.2
+solution: AirportsRediSearchCore.sln
+script:
+  - dotnet restore
+  - dotnet build
