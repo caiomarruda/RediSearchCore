@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NRediSearch;
 using StackExchange.Redis;
 using System.Collections.Generic;
@@ -115,8 +116,11 @@ namespace RediSearchCore.Infrastructure.Repositories
             foreach (var item in docList)
             {
                 var jsonRedisItem = JsonConvert.SerializeObject(item.GetProperties());
-                var jsonResObj = JsonConvert.DeserializeObject<T>(jsonRedisItem);
-                newDoc.Add(jsonResObj);
+                JObject jItemObj = JObject.Parse(jsonRedisItem);
+                jItemObj["Id"] = item.Id;
+                T castJsonObj = jItemObj.ToObject<T>();
+                
+                newDoc.Add(castJsonObj);
             }
 
             return newDoc;

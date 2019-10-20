@@ -25,7 +25,7 @@ namespace RediSearchCore.Infrastructure.Repositories
             //.Limit(0, 5);
 
             List<Airports> airports = new List<Airports>();
-
+            var result2 = _client.Search(new Query($"(@code:{ sentence })|(@city:{ sentence }*)"));
             var result = _client.Search(new Query($"(@code:{ sentence })|(@city:{ sentence }*)")).Documents;
 
             return CastRedisValues<Airports>(result);

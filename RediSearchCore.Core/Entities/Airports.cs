@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace RediSearchCore.Core.Entities
+﻿namespace RediSearchCore.Core.Entities
 {
-    public class Airports
+    public class Airports : BaseEntity
     {
         private int _score;
         public string Code { get; set; }
