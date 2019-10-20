@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/caiomarruda/RediSearchCore">
-    <img src="https://user-images.githubusercontent.com/7254083/67167919-8ac01980-f396-11e9-9477-955f82d3000d.png">
+    <img src="https://user-images.githubusercontent.com/7254083/67168079-47ff4100-f398-11e9-94b8-1ed042c90374.png">
   </a>
 </p>
 
