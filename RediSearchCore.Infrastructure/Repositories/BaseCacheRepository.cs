@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using NRediSearch;
 using StackExchange.Redis;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace RediSearchCore.Infrastructure.Repositories
@@ -33,6 +34,8 @@ namespace RediSearchCore.Infrastructure.Repositories
 
         public async Task<bool> AddAsync(string docId, Dictionary<string, dynamic> docDic)
         {
+            var score = docDic.FirstOrDefault(x => x.Key == "Score").Value ?? 1;
+
             Dictionary<string, RedisValue> dictDocRedis = new Dictionary<string, RedisValue>();
 
             foreach (var item in docDic)
@@ -40,7 +43,7 @@ namespace RediSearchCore.Infrastructure.Repositories
                 dictDocRedis.Add(item.Key, item.Value ?? "");
             }
 
-            return await _client.AddDocumentAsync(docId, dictDocRedis);
+            return await _client.AddDocumentAsync(docId, dictDocRedis, score);
         }
 
         public T Get<T>(string docId) where T : class
@@ -65,6 +68,8 @@ namespace RediSearchCore.Infrastructure.Repositories
 
         public bool Add(string docId, Dictionary<string, dynamic> docDic)
         {
+            var score = docDic.FirstOrDefault(x => x.Key == "Score").Value ?? 1;
+
             Dictionary<string, RedisValue> dictDocRedis = new Dictionary<string, RedisValue>();
 
             foreach (var item in docDic)
@@ -72,7 +77,7 @@ namespace RediSearchCore.Infrastructure.Repositories
                 dictDocRedis.Add(item.Key, item.Value ?? "");
             }
 
-            return _client.AddDocument(docId, dictDocRedis);
+            return _client.AddDocument(docId, dictDocRedis, score);
         }
 
         public bool Delete(string docId)
@@ -87,6 +92,8 @@ namespace RediSearchCore.Infrastructure.Repositories
 
         public bool Update(string docId, Dictionary<string, dynamic> docDic)
         {
+            var score = docDic.FirstOrDefault(x => x.Key == "Score").Value ?? 1;
+
             Dictionary<string, RedisValue> dictDocRedis = new Dictionary<string, RedisValue>();
 
             foreach (var item in docDic)
@@ -94,11 +101,13 @@ namespace RediSearchCore.Infrastructure.Repositories
                 dictDocRedis.Add(item.Key, item.Value ?? "");
             }
 
-            return _client.UpdateDocument(docId, dictDocRedis);
+            return _client.UpdateDocument(docId, dictDocRedis, score);
         }
 
         public async Task<bool> UpdateAsync(string docId, Dictionary<string, dynamic> docDic)
         {
+            var score = docDic.FirstOrDefault(x => x.Key == "Score").Value ?? 1;
+
             Dictionary<string, RedisValue> dictDocRedis = new Dictionary<string, RedisValue>();
 
             foreach (var item in docDic)
@@ -106,7 +115,7 @@ namespace RediSearchCore.Infrastructure.Repositories
                 dictDocRedis.Add(item.Key, item.Value ?? "");
             }
 
-            return await _client.UpdateDocumentAsync(docId, dictDocRedis);
+            return await _client.UpdateDocumentAsync(docId, dictDocRedis, score);
         }
 
         protected List<T> CastRedisValues<T>(List<Document> docList) where T : class
