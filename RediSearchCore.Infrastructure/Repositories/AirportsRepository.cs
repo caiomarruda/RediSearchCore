@@ -39,7 +39,8 @@ namespace RediSearchCore.Infrastructure.Repositories
             sch.AddTextField("State");
             sch.AddTextField("Country");            
             sch.AddTagField("Tag");
-            
+            sch.AddGeoField("GeoPoint");
+
             return _client.CreateIndex(sch, Client.IndexOptions.Default);
         }
 
@@ -60,6 +61,9 @@ namespace RediSearchCore.Infrastructure.Repositories
                 dictItem.Add("State", item.State);
                 dictItem.Add("Country", item.Country);
                 dictItem.Add("Tag", item.Tag);
+                dictItem.Add("Lat", item.Lat);
+                dictItem.Add("Lon", item.Lon);
+                dictItem.Add("GeoPoint", $"{ item.Lon },{ item.Lat }");
 
                 this.Add(g.ToString(), dictItem);
             }
