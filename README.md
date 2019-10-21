@@ -38,12 +38,12 @@ docker run -e redisConnection="redisearch server" -p 80:80 caioarruda/redisearch
 ```
 
 ## How to build
-1. You need to install .Net Core 2.2+ SDK:
+You need to install .Net Core 2.2+ SDK:
 ```url
 https://dotnet.microsoft.com/download/dotnet-core
 ```
 
-And than, run this command in RediSearchCore sub-folder:
+And then, run this command in RediSearchCore sub-folder:
 ```bash
 dotnet restore
 dotnet publish -c Release
@@ -58,6 +58,7 @@ docker build -t caiomarruda/redisearchcore:latest .
 ## Usage
 
 Use the ports 80 or 443(SSL) to run this project. All API documentation are available in Swagger UI.
+![Swagger UI](https://user-images.githubusercontent.com/7254083/67224775-df60a480-f429-11e9-8636-52318cd49895.png)
 
 You can also run this project using [Play With Docker](https://labs.play-with-docker.com/) for free.
 
