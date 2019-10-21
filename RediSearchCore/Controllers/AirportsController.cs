@@ -136,14 +136,14 @@ namespace RediSearchCore.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<bool>> UpdateAsync(string docId, Dictionary<string, dynamic> docDic)
+        public async Task<ActionResult<bool>> UpdateAsync(string docId, Airports airports)
         {
             try
             {
                 return Ok(new Notification
                 {
                     Success = true,
-                    Data = await _airportService.UpdateAsync(docId, docDic)
+                    Data = await _airportService.UpdateAsync(docId, airports)
                 });
 
             }
@@ -158,14 +158,14 @@ namespace RediSearchCore.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<bool>> AddAsync(string docId, Dictionary<string, dynamic> docDic)
+        public async Task<ActionResult<bool>> AddAsync(string docId, Airports airports)
         {
             try
             {
                 return Ok(new Notification
                 {
                     Success = true,
-                    Data = await _airportService.AddAsync(docId, docDic)
+                    Data = await _airportService.AddAsync(docId, airports)
                 });
 
             }

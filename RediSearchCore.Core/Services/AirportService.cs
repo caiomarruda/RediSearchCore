@@ -1,6 +1,8 @@
 ﻿using RediSearchCore.Core.Entities;
 using RediSearchCore.Core.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace RediSearchCore.Core.Services
@@ -39,8 +41,11 @@ namespace RediSearchCore.Core.Services
             return _airportsRepository.GetAsync<Airports>(key);
         }
 
-        public Task<bool> AddAsync(string docId, Dictionary<string, dynamic> docDic)
+        public Task<bool> AddAsync(string docId, Airports airports)
         {
+
+            var docDic = CastEntityToDict<Airports>(airports);
+
             return _airportsRepository.AddAsync(docId, docDic);
         }
 
@@ -49,9 +54,18 @@ namespace RediSearchCore.Core.Services
             return _airportsRepository.DeleteAsync(docId);
         }
 
-        public Task<bool> UpdateAsync(string docId, Dictionary<string, dynamic> docDic)
+        public Task<bool> UpdateAsync(string docId, Airports airports)
         {
+            var docDic = CastEntityToDict<Airports>(airports);
+
             return _airportsRepository.UpdateAsync(docId, docDic);
+        }
+
+        private Dictionary<string, object> CastEntityToDict<T>(T data) where T : class
+        {
+            return data.GetType()
+            .GetProperties(BindingFlags.Instance | BindingFlags.Public)
+            .ToDictionary(prop => prop.Name, prop => prop.GetValue(data, null));
         }
     }
 }
