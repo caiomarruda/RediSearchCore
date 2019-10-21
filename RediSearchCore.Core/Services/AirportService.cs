@@ -33,6 +33,7 @@ namespace RediSearchCore.Core.Services
 
         public List<Airports> Search(string value)
         {
+            value = value.Trim();
             return _airportsRepository.Search(value);
         }
 
