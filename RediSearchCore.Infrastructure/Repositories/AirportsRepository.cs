@@ -25,8 +25,7 @@ namespace RediSearchCore.Infrastructure.Repositories
             //.Limit(0, 5);
 
             List<Airports> airports = new List<Airports>();
-            var result2 = _client.Search(new Query($"(@code:{ sentence })|(@city:{ sentence }*)"));
-            var result = _client.Search(new Query($"(@code:{ sentence })|(@city:{ sentence }*)")).Documents;
+            var result = _client.Search(new Query($"(@code:{ sentence })|(@city:{ sentence }*)|(@Tag:{{{ sentence }}})")).Documents;
 
             return CastRedisValues<Airports>(result);
         }
@@ -38,8 +37,9 @@ namespace RediSearchCore.Infrastructure.Repositories
             sch.AddTextField("Name");
             sch.AddTextField("City", 5);
             sch.AddTextField("State");
-            sch.AddTextField("Country");
-
+            sch.AddTextField("Country");            
+            sch.AddTagField("Tag");
+            
             return _client.CreateIndex(sch, Client.IndexOptions.Default);
         }
 
@@ -59,6 +59,7 @@ namespace RediSearchCore.Infrastructure.Repositories
                 dictItem.Add("City", item.City);
                 dictItem.Add("State", item.State);
                 dictItem.Add("Country", item.Country);
+                dictItem.Add("Tag", item.Tag);
 
                 this.Add(g.ToString(), dictItem);
             }

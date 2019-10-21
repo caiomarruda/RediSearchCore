@@ -6,6 +6,7 @@
 
         #region Cache Attributes
         public double Score { get; set; } = 1;
+        public string Tag { get; set; }
         #endregion
     }
 }
