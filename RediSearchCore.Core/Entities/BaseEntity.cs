@@ -5,7 +5,7 @@
         public string Id { get; set; }
 
         #region Cache Attributes
-        public double Score { get; set; } = 1;
+        public double Score { get; set; } = 0;
         public string Tag { get; set; }
         #endregion
     }
