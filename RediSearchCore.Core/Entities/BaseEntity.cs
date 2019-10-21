@@ -5,19 +5,7 @@
         public string Id { get; set; }
 
         #region Cache Attributes
-        private double _score = 1;
-        public double Score
-        {
-            get
-            {
-                return _score;
-            }
-            set
-            {
-                if (value > 0 && value <= 5)
-                    _score = value;
-            }
-        }
+        public double Score { get; set; } = 1;
         #endregion
     }
 }
