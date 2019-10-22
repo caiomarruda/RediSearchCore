@@ -58,7 +58,6 @@ docker build -t caiomarruda/redisearchcore:latest .
 ## Usage
 
 Use the ports 80 or 443(SSL) to run this project. All API documentation are available in Swagger UI.
-![Swagger UI](https://user-images.githubusercontent.com/7254083/67224775-df60a480-f429-11e9-8636-52318cd49895.png)
 
 You can also run this project using [Play With Docker](https://labs.play-with-docker.com/) for free.
 
