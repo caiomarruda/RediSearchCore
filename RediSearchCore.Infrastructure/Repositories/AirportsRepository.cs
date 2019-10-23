@@ -46,7 +46,7 @@ namespace RediSearchCore.Infrastructure.Repositories
 
         public void PushSampleData()
         {
-            string url = "https://gist.githubusercontent.com/tdreyno/4278655/raw/7b0762c09b519f40397e4c3e100b097d861f5588/airports.json";
+            string url = "https://gist.githubusercontent.com/caiomarruda/c043955e5e8ba4398f363b7604be4cac/raw/7b0762c09b519f40397e4c3e100b097d861f5588/airports.json";
             string jsonData = new WebClient().DownloadString(url);
             var result = JsonConvert.DeserializeObject<List<Airports>>(jsonData);
 
