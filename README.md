@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/caiomarruda/RediSearchCore">
-    <img src="https://user-images.githubusercontent.com/7254083/67168079-47ff4100-f398-11e9-94b8-1ed042c90374.png">
+    <img src="https://user-images.githubusercontent.com/7254083/67167919-8ac01980-f396-11e9-9477-955f82d3000d.png">
   </a>
 </p>
 
@@ -32,7 +32,7 @@ docker run -p 6379:6379 redislabs/redisearch:latest
 After Redis and RediSearch are up and running, you can choose your best option to run this project:
 
 ### Via Docker (recomended)
-You can pull direcly from Docker Hub (https://cloud.docker.com/repository/docker/caioarruda/redisearchcore)
+You can pull direcly from Docker Hub (https://hub.docker.com/r/caioarruda/redisearchcore)
 ```docker
 docker run -e redisConnection="redisearch server" -p 80:80 caioarruda/redisearchcore:latest
 ```
