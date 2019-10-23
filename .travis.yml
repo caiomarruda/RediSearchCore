@@ -3,7 +3,7 @@ dist: bionic
 sudo: required
 mono: none
 dotnet: 2.2
-solution: AirportsRediSearchCore.sln
+solution: RediSearchCore.sln
 script:
   - dotnet restore
   - dotnet build
