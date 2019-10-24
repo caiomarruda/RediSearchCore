@@ -4,6 +4,9 @@ sudo: required
 mono: none
 dotnet: 2.2
 solution: RediSearchCore.sln
+before_install:
+  - docker pull redislabs/redisearch:latest
+  - docker run -d -p 6379:6379 redislabs/redisearch:latest
 script:
   - dotnet restore
   - dotnet build
