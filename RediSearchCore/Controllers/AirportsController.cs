@@ -19,7 +19,6 @@ namespace RediSearchCore.Controllers
             _airportService = airportService;
         }
 
-        //[HttpGet("{value}")]
         [HttpGet]
         [Route("Search")]
         public ActionResult<IEnumerable<Airports>> Search(string value)
