@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
-using Newtonsoft.Json.Linq;
 using RediSearchCore.Core.Entities;
 using RediSearchCore.Core.Models;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,31 +17,6 @@ namespace RediSearchCore.Tests
         {
             _client = factory.CreateClient();
         }
-
-        //[Fact]
-        //public async Task Airports_PushSampleData_Success()
-        //{
-        //    try
-        //    {
-        //        var response = await CreateIndex();
-        //        response.EnsureSuccessStatusCode();
-
-        //        // Assert
-        //        Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Assert.True(false, "teste2");
-        //    }
-        //    //var stringContent = new StringContent("", Encoding.UTF8, "application/json");
-
-        //    //var response = await _client.PostAsync($"/api/airports/PushSampleData", stringContent);
-        //    //response.EnsureSuccessStatusCode();
-        //    //var stringResponse = await response.Content.ReadAsStringAsync();
-
-        //    //// Assert
-        //    //Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK);
-        //}
 
         [Theory]
         [InlineData("sao paulo")]
@@ -299,8 +272,6 @@ namespace RediSearchCore.Tests
         private HttpResponseMessage DeleteIndex()
         {
             return _client.DeleteAsync($"/api/airports/DropIndex").Result;
-            //response.EnsureSuccessStatusCode();
-            //return await response.Content.ReadAsStringAsync();
         }
 
         private HttpResponseMessage CreateIndex()
