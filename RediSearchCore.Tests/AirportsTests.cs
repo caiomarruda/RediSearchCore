@@ -2,6 +2,8 @@
 using RediSearchCore.Core.Entities;
 using RediSearchCore.Core.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,9 +36,11 @@ namespace RediSearchCore.Tests
                 var stringResponse = await response.Content.ReadAsStringAsync();
 
                 var notificationResult = Newtonsoft.Json.JsonConvert.DeserializeObject<Notification>(stringResponse);
+                var dataObj = Newtonsoft.Json.JsonConvert.DeserializeObject<IEnumerable<Airports>>(notificationResult.Data.ToString());
+
 
                 // Assert
-                Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK && notificationResult.Success);
+                Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK && notificationResult.Success && dataObj.Count() > 0);
             }
             catch (Exception ex)
             {
@@ -60,9 +64,10 @@ namespace RediSearchCore.Tests
                 var stringResponse = await response.Content.ReadAsStringAsync();
 
                 var notificationResult = Newtonsoft.Json.JsonConvert.DeserializeObject<Notification>(stringResponse);
+                var dataObj = Newtonsoft.Json.JsonConvert.DeserializeObject<IEnumerable<Airports>>(notificationResult.Data.ToString());
 
                 // Assert
-                Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK && notificationResult.Success);
+                Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK && notificationResult.Success && dataObj.Count() == 0);
             }
             catch (Exception ex)
             {
@@ -260,8 +265,9 @@ namespace RediSearchCore.Tests
                 stringResponse = await response.Content.ReadAsStringAsync();
 
                 notificationResult = Newtonsoft.Json.JsonConvert.DeserializeObject<Notification>(stringResponse);
+                var dataObj = Newtonsoft.Json.JsonConvert.DeserializeObject<Airports>(notificationResult.Data.ToString());
 
-                Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK && notificationResult.Success);
+                Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK && notificationResult.Success && dataObj.Code == "AAA");
             }
             catch (Exception ex)
             {
