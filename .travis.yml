@@ -10,3 +10,4 @@ before_install:
 script:
   - dotnet restore
   - dotnet build
+  - dotnet test RediSearchCore.Tests/RediSearchCore.Tests.csproj
