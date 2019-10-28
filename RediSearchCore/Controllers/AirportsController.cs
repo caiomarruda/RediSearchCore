@@ -113,7 +113,7 @@ namespace RediSearchCore.Controllers
         }
 
         [HttpGet("{key}")]
-        public async Task<ActionResult<IEnumerable<Airports>>> GetAsync(string key)
+        public async Task<ActionResult<IEnumerable<Airports>>> Get(string key)
         {
             try
             {
@@ -135,7 +135,7 @@ namespace RediSearchCore.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<bool>> UpdateAsync(string docId, Airports airports)
+        public async Task<ActionResult<bool>> Update(string docId, Airports airports)
         {
             try
             {
@@ -157,7 +157,7 @@ namespace RediSearchCore.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<bool>> AddAsync(string docId, Airports airports)
+        public async Task<ActionResult<bool>> Add(string docId, Airports airports)
         {
             try
             {
@@ -179,7 +179,7 @@ namespace RediSearchCore.Controllers
         }
 
         [HttpDelete("{key}")]
-        public async Task<ActionResult<bool>> DeleteAsync(string key)
+        public async Task<ActionResult<bool>> Delete(string key)
         {
             try
             {

@@ -31,7 +31,7 @@ namespace RediSearchCore.Infrastructure.Repositories
             return CastRedisValues<Airports>(result);
         }
 
-        public async Task<List<Airports>> SearchAsync(string sentence)
+        public async Task<IEnumerable<Airports>> SearchAsync(string sentence)
         {
             Query q = new Query($"(@code:{ sentence })|(@city:{ sentence }*)|(@Tag:{{{ sentence }}})")
                 .SetLanguage("portuguese");

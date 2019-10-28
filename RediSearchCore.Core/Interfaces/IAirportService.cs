@@ -6,7 +6,8 @@ namespace RediSearchCore.Core.Interfaces
 {
     public interface IAirportService
     {
-        Task<List<Airports>> SearchAsync(string value);
+        Task<IEnumerable<Airports>> SearchAsync(string value);
+        List<Airports> Search(string value);
         bool CreateIndex();
         bool DropIndex();
         void PushSampleData();
