@@ -21,14 +21,14 @@ namespace RediSearchCore.Controllers
 
         [HttpGet]
         [Route("Search")]
-        public ActionResult<IEnumerable<Airports>> Search(string value)
+        public async Task<ActionResult<IEnumerable<Airports>>> Search(string value)
         {
             try
             {
                 return Ok(new Notification
                 {
                     Success = true,
-                    Data = _airportService.Search(value)
+                    Data = await _airportService.SearchAsync(value)
             });
                 
             }

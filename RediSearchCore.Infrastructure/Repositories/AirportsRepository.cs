@@ -5,6 +5,7 @@ using RediSearchCore.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace RediSearchCore.Infrastructure.Repositories
 {
@@ -24,10 +25,23 @@ namespace RediSearchCore.Infrastructure.Repositories
             //.AddFilter(new Query.NumericFilter("price", 0, 1000))
             //.Limit(0, 5);
 
-            List<Airports> airports = new List<Airports>();
             var result = _client.Search(new Query($"(@code:{ sentence })|(@city:{ sentence }*)|(@Tag:{{{ sentence }}})")).Documents;
 
             return CastRedisValues<Airports>(result);
+        }
+
+        public async Task<List<Airports>> SearchAsync(string sentence)
+        {
+            Query q = new Query(sentence)
+                .SetLanguage("portuguese");
+
+            //.AddFilter(new Query.NumericFilter("price", 0, 1000))
+            //.Limit(0, 5);
+
+            var result = await _client.SearchAsync(new Query($"(@code:{ sentence })|(@city:{ sentence }*)|(@Tag:{{{ sentence }}})"));
+            var stringResponse = result.Documents;
+
+            return CastRedisValues<Airports>(stringResponse);
         }
 
         public override bool CreateIndex()

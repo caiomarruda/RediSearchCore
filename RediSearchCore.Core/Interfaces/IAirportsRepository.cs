@@ -13,6 +13,7 @@ namespace RediSearchCore.Core.Interfaces
         bool Update(string docId, Dictionary<string, dynamic> docDic);
         Task<bool> UpdateAsync(string docId, Dictionary<string, dynamic> docDic);
         List<Airports> Search(string sentence);
+        Task<List<Airports>> SearchAsync(string sentence);
         bool CreateIndex();
         bool DropIndex();
         void PushSampleData();

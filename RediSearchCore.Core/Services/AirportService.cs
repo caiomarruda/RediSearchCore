@@ -31,10 +31,10 @@ namespace RediSearchCore.Core.Services
             _airportsRepository.PushSampleData();
         }
 
-        public List<Airports> Search(string value)
+        public Task<List<Airports>> SearchAsync(string value)
         {
             value = value.Trim();
-            return _airportsRepository.Search(value);
+            return _airportsRepository.SearchAsync(value);
         }
 
         public Task<Airports> GetAsync(string key)
