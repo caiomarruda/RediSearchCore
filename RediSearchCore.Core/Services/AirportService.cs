@@ -31,10 +31,16 @@ namespace RediSearchCore.Core.Services
             _airportsRepository.PushSampleData();
         }
 
-        public Task<List<Airports>> SearchAsync(string value)
+        public Task<IEnumerable<Airports>> SearchAsync(string value)
         {
             value = value.Trim();
             return _airportsRepository.SearchAsync(value);
+        }
+
+        public List<Airports> Search(string value)
+        {
+            value = value.Trim();
+            return _airportsRepository.Search(value);
         }
 
         public Task<Airports> GetAsync(string key)
@@ -45,7 +51,7 @@ namespace RediSearchCore.Core.Services
         public Task<bool> AddAsync(string docId, Airports airports)
         {
 
-            var docDic = CastEntityToDict<Airports>(airports);
+            var docDic = CastEntityToDict(airports);
 
             return _airportsRepository.AddAsync(docId, docDic);
         }
@@ -57,7 +63,7 @@ namespace RediSearchCore.Core.Services
 
         public Task<bool> UpdateAsync(string docId, Airports airports)
         {
-            var docDic = CastEntityToDict<Airports>(airports);
+            var docDic = CastEntityToDict(airports);
 
             return _airportsRepository.UpdateAsync(docId, docDic);
         }

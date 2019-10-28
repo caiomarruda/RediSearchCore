@@ -9,6 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RediSearchCore.Infrastructu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RediSearchCore", "RediSearchCore\RediSearchCore.csproj", "{0F9646F1-5E54-420E-8C9C-49BBE4A08AB9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6C3BE31B-5D1F-4196-B9DB-6223DD90FEC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5DA80B7B-1194-4CE3-8065-AEFF3EE9C591}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RediSearchCore.Tests", "RediSearchCore.Tests\RediSearchCore.Tests.csproj", "{0A6279CF-CF4D-4FAB-BCAD-95380FEAA9B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +33,19 @@ Global
 		{0F9646F1-5E54-420E-8C9C-49BBE4A08AB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F9646F1-5E54-420E-8C9C-49BBE4A08AB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F9646F1-5E54-420E-8C9C-49BBE4A08AB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A6279CF-CF4D-4FAB-BCAD-95380FEAA9B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A6279CF-CF4D-4FAB-BCAD-95380FEAA9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A6279CF-CF4D-4FAB-BCAD-95380FEAA9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A6279CF-CF4D-4FAB-BCAD-95380FEAA9B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2D42773E-C13D-4428-BAAA-B464B7D36B98} = {6C3BE31B-5D1F-4196-B9DB-6223DD90FEC0}
+		{BAFE6F91-668E-498B-891D-7B9C3EAA0C16} = {6C3BE31B-5D1F-4196-B9DB-6223DD90FEC0}
+		{0F9646F1-5E54-420E-8C9C-49BBE4A08AB9} = {6C3BE31B-5D1F-4196-B9DB-6223DD90FEC0}
+		{0A6279CF-CF4D-4FAB-BCAD-95380FEAA9B7} = {5DA80B7B-1194-4CE3-8065-AEFF3EE9C591}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {06CEEBC0-2EB7-4FD7-92A1-876A64FEC2C2}
