@@ -34,7 +34,7 @@ namespace RediSearchCore.Infrastructure.Repositories
         public async Task<List<Airports>> SearchAsync(string sentence)
         {
             Query q = new Query($"(@code:{ sentence })|(@city:{ sentence }*)|(@Tag:{{{ sentence }}})")
-                .SetLanguage("portuguese")
+                .SetLanguage("portuguese");
 
             //.AddFilter(new Query.NumericFilter("price", 0, 1000))
             //.Limit(0, 5);
