@@ -19,26 +19,28 @@ namespace RediSearchCore.Infrastructure.Repositories
 
         public List<Airports> Search(string sentence)
         {
-            Query q = new Query(sentence)
+            Query q = new Query($"(@code:{ sentence })|(@city:{ sentence }*)|(@Tag:{{{ sentence }}})")
                 .SetLanguage("portuguese");
 
             //.AddFilter(new Query.NumericFilter("price", 0, 1000))
             //.Limit(0, 5);
+            //.AddFilter(new Query.GeoFilter("GeoPoint", 10.0, 20.0, 10, StackExchange.Redis.GeoUnit.Kilometers));
 
-            var result = _client.Search(new Query($"(@code:{ sentence })|(@city:{ sentence }*)|(@Tag:{{{ sentence }}})")).Documents;
+            var result = _client.Search(q).Documents;
 
             return CastRedisValues<Airports>(result);
         }
 
         public async Task<List<Airports>> SearchAsync(string sentence)
         {
-            Query q = new Query(sentence)
-                .SetLanguage("portuguese");
+            Query q = new Query($"(@code:{ sentence })|(@city:{ sentence }*)|(@Tag:{{{ sentence }}})")
+                .SetLanguage("portuguese")
 
             //.AddFilter(new Query.NumericFilter("price", 0, 1000))
             //.Limit(0, 5);
+            //.AddFilter(new Query.GeoFilter("GeoPoint", 10.0, 20.0, 10, StackExchange.Redis.GeoUnit.Kilometers));
 
-            var result = await _client.SearchAsync(new Query($"(@code:{ sentence })|(@city:{ sentence }*)|(@Tag:{{{ sentence }}})"));
+            var result = await _client.SearchAsync(q);
             var stringResponse = result.Documents;
 
             return CastRedisValues<Airports>(stringResponse);
