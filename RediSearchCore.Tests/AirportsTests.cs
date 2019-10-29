@@ -267,6 +267,8 @@ namespace RediSearchCore.Tests
 
                 var notificationResult = Newtonsoft.Json.JsonConvert.DeserializeObject<Notification>(stringResponse);
 
+                Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK && notificationResult.Success);
+
                 // Get
                 Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK && notificationResult.Success);
 
@@ -277,7 +279,7 @@ namespace RediSearchCore.Tests
                 notificationResult = Newtonsoft.Json.JsonConvert.DeserializeObject<Notification>(stringResponse);
                 var dataObj = Newtonsoft.Json.JsonConvert.DeserializeObject<Airports>(notificationResult.Data.ToString());
 
-                Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK && notificationResult.Success && dataObj.Code == "AAA");
+                Assert.True(dataObj.Code == "AAA");
             }
             catch (Exception)
             {
