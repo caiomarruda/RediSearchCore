@@ -42,7 +42,7 @@ namespace RediSearchCore.Tests
                 // Assert
                 Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK && notificationResult.Success && dataObj.Count() > 0);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Assert.True(false, "Error in Search Method");
             }
@@ -69,7 +69,7 @@ namespace RediSearchCore.Tests
                 // Assert
                 Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK && notificationResult.Success && dataObj.Count() == 0);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Assert.True(false, "Error in Search Method");
             }
@@ -108,7 +108,7 @@ namespace RediSearchCore.Tests
                 // Assert
                 Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK && notificationResult.Success);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Assert.True(false, "Error in Add Method");
             }
@@ -182,7 +182,7 @@ namespace RediSearchCore.Tests
 
                 Assert.True(dataObj.Code == "BBB");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Assert.True(false, "Error in Update Method");
             }
@@ -230,7 +230,7 @@ namespace RediSearchCore.Tests
 
                 Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK && notificationResult.Success);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Assert.True(false, "Error in Delete Method");
             }
@@ -279,7 +279,7 @@ namespace RediSearchCore.Tests
 
                 Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK && notificationResult.Success && dataObj.Code == "AAA");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Assert.True(false, "Error in Get Method");
             }
