@@ -171,6 +171,16 @@ namespace RediSearchCore.Tests
                 notificationResult = Newtonsoft.Json.JsonConvert.DeserializeObject<Notification>(stringResponse);
 
                 Assert.True(response.StatusCode == System.Net.HttpStatusCode.OK && notificationResult.Success);
+
+                //Get
+                response = await _client.GetAsync($"/api/airports/{ airports.Id }");
+                response.EnsureSuccessStatusCode();
+                stringResponse = await response.Content.ReadAsStringAsync();
+
+                notificationResult = Newtonsoft.Json.JsonConvert.DeserializeObject<Notification>(stringResponse);
+                var dataObj = Newtonsoft.Json.JsonConvert.DeserializeObject<Airports>(notificationResult.Data.ToString());
+
+                Assert.True(dataObj.Code == "BBB");
             }
             catch (Exception ex)
             {
