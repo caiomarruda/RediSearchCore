@@ -70,14 +70,15 @@ namespace RediSearchCore.Infrastructure.Repositories
             foreach (var item in result)
             {
                 Guid g = Guid.NewGuid();
-                var dictItem = new Dictionary<string, dynamic>();
-
-                dictItem.Add("Name", item.Name);
-                dictItem.Add("Country", item.Country);
-                dictItem.Add("Address", item.Address);
-                dictItem.Add("Lat", item.Lat);
-                dictItem.Add("Lon", item.Lon);
-                dictItem.Add("GeoPoint", $"{ item.Lon },{ item.Lat }");
+                var dictItem = new Dictionary<string, dynamic>
+                {
+                    { "Name", item.Name },
+                    { "Country", item.Country },
+                    { "Address", item.Address },
+                    { "Lat", item.Lat },
+                    { "Lon", item.Lon },
+                    { "GeoPoint", $"{ item.Lon },{ item.Lat }" }
+                };
 
                 this.Add(g.ToString(), dictItem);
             }
