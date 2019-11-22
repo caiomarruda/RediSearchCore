@@ -4,7 +4,8 @@
   </a>
 </p>
 
-# RediSearchCore [![Build Status](https://travis-ci.org/caiomarruda/RediSearchCore.svg?branch=master)](https://travis-ci.org/caiomarruda/RediSearchCore)
+# RediSearchCore
+[![Build Status](https://travis-ci.org/caiomarruda/RediSearchCore.svg?branch=master)](https://travis-ci.org/caiomarruda/RediSearchCore) <a href="https://github.com/caiomarruda/RediSearchCore"><img alt="GitHub Actions status" src="https://github.com/caiomarruda/redisearchcore/workflows/Tests/badge.svg"></a>
 
 RediSearchCore is a .Net Core project for easly integration with RediSearch.
 
