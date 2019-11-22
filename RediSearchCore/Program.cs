@@ -10,9 +10,9 @@ namespace RediSearchCore
         public static void Main(string[] args)
         {
             var host = CreateWebHostBuilder(args).
-                UseKestrel().
                 UseUrls("http://0.0.0.0:" + Environment.GetEnvironmentVariable("PORT")).
                 Build();
+                
 
             host.Run();
         }
