@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using System;
 
 namespace RediSearchCore
 {
@@ -7,7 +9,12 @@ namespace RediSearchCore
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            var host = CreateWebHostBuilder(args).
+                UseKestrel().
+                UseUrls("http://0.0.0.0:" + Environment.GetEnvironmentVariable("PORT")).
+                Build();
+
+            host.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
