@@ -11,5 +11,9 @@ script:
   - dotnet restore
   - dotnet build
   - dotnet test RediSearchCore.Tests/RediSearchCore.Tests.csproj
+deploy:
+  provider: heroku
+  api_key: 677e4f64-e05d-4fc0-9f8c-8663c944654e
+  app: redisearchcore
 on:
   tags: true
