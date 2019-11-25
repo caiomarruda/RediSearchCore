@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using NRediSearch;
 using RediSearchCore.Core.Entities;
 using RediSearchCore.Core.Interfaces;
@@ -13,7 +14,7 @@ namespace RediSearchCore.Infrastructure.Repositories
     {
         private static readonly string ixName = "airports";
 
-        public AirportsRepository(string con) : base(con, ixName)
+        public AirportsRepository(IConfiguration configuration) : base(configuration["redisConnection"], ixName)
         {
         }
 

@@ -24,7 +24,7 @@ namespace RediSearchCore
         {
             services.AddControllers();
             services.AddTransient<IAirportService, AirportService>();
-            services.AddSingleton<IAirportsRepository>(c => new AirportsRepository(Configuration["redisConnection"]));
+            services.AddSingleton<IAirportsRepository, AirportsRepository>();
 
             services.AddSwaggerGen(c =>
             {
