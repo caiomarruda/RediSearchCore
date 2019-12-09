@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redisearchcore
+spec:
+  selector:
+    matchLabels:
+      app: redisearchcore-pod
+  template:
+    metadata:
+      labels:
+        app: redisearchcore-pod
+    spec:
+      containers:
+      - name: redisearchcore-container
+        image: caioarruda/redisearchcore:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
