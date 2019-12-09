@@ -25,8 +25,8 @@ namespace RediSearchCore
             services.AddControllers();
             services.AddTransient<IAirportService, AirportService>();
             services.AddTransient<IFastFoodService, FastFoodService>();
-            services.AddSingleton<IAirportsRepository>(c => new AirportsRepository(Configuration["redisConnection"]));
-            services.AddSingleton<IFastFoodsRepository>(c => new FastFoodsRepository(Configuration["redisConnection"])); //todo: change interface
+            services.AddSingleton<IAirportsRepository, AirportsRepository>();
+            services.AddSingleton<IFastFoodsRepository, FastFoodsRepository>();
 
             services.AddSwaggerGen(c =>
             {

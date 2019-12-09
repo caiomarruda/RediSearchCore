@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using NRediSearch;
 using RediSearchCore.Core.Entities;
 using RediSearchCore.Core.Interfaces;
@@ -13,8 +14,9 @@ namespace RediSearchCore.Infrastructure.Repositories
     public sealed class FastFoodsRepository : BaseCacheRepository, IFastFoodsRepository
     {
         private static readonly string ixName = "fastfoods";
+        private readonly IConfiguration _configuration;
 
-        public FastFoodsRepository(string con) : base(con, ixName)
+        public FastFoodsRepository(IConfiguration configuration) : base(configuration["redisConnection"], ixName)
         {
         }
 
@@ -62,8 +64,7 @@ namespace RediSearchCore.Infrastructure.Repositories
 
         public void PushSampleData()
         {
-            //patched by public url: https://www.mcdonalds.com.ec/api/restaurantsByCountry?country=BR
-            string url = "https://gist.githubusercontent.com/caiomarruda/aa47b5be15642c2c811891970375921c/raw/eb7adec75ed46f51a2c5bd1a084849e761826711/mcdonalds-locations-br.json";
+            string url = _configuration["fastFoodsRepository"];
             string jsonData = new WebClient().DownloadString(url);
             var result = JsonConvert.DeserializeObject<List<FastFoods>>(jsonData);
 
