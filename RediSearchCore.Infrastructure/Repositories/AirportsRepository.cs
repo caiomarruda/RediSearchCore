@@ -13,9 +13,11 @@ namespace RediSearchCore.Infrastructure.Repositories
     public sealed class AirportsRepository : BaseCacheRepository, IAirportsRepository
     {
         private static readonly string ixName = "airports";
+        private readonly IConfiguration _configuration;
 
         public AirportsRepository(IConfiguration configuration) : base(configuration["redisConnection"], ixName)
         {
+            _configuration = configuration;
         }
 
         public List<Airports> Search(string sentence)
@@ -63,24 +65,25 @@ namespace RediSearchCore.Infrastructure.Repositories
 
         public void PushSampleData()
         {
-            string url = "https://gist.githubusercontent.com/caiomarruda/c043955e5e8ba4398f363b7604be4cac/raw/7b0762c09b519f40397e4c3e100b097d861f5588/airports.json";
+            string url = _configuration["airportsRepository"];
             string jsonData = new WebClient().DownloadString(url);
             var result = JsonConvert.DeserializeObject<List<Airports>>(jsonData);
 
             foreach (var item in result)
             {
                 Guid g = Guid.NewGuid();
-                var dictItem = new Dictionary<string, dynamic>();
-
-                dictItem.Add("Code", item.Code);
-                dictItem.Add("Name", item.Name);
-                dictItem.Add("City", item.City);
-                dictItem.Add("State", item.State);
-                dictItem.Add("Country", item.Country);
-                dictItem.Add("Tag", item.Tag);
-                dictItem.Add("Lat", item.Lat);
-                dictItem.Add("Lon", item.Lon);
-                dictItem.Add("GeoPoint", $"{ item.Lon },{ item.Lat }");
+                var dictItem = new Dictionary<string, dynamic>
+                {
+                    { "Code", item.Code },
+                    { "Name", item.Name },
+                    { "City", item.City },
+                    { "State", item.State },
+                    { "Country", item.Country },
+                    { "Tag", item.Tag },
+                    { "Lat", item.Lat },
+                    { "Lon", item.Lon },
+                    { "GeoPoint", $"{ item.Lon },{ item.Lat }" }
+                };
 
                 this.Add(g.ToString(), dictItem);
             }
