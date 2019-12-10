@@ -18,6 +18,7 @@ namespace RediSearchCore.Infrastructure.Repositories
 
         public FastFoodsRepository(IConfiguration configuration) : base(configuration["redisConnection"], ixName)
         {
+            _configuration = configuration;
         }
 
         public List<FastFoods> Search(FastFoodsInputCommand command)
