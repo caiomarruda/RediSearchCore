@@ -24,7 +24,9 @@ namespace RediSearchCore
         {
             services.AddControllers();
             services.AddTransient<IAirportService, AirportService>();
+            services.AddTransient<IFastFoodService, FastFoodService>();
             services.AddSingleton<IAirportsRepository, AirportsRepository>();
+            services.AddSingleton<IFastFoodsRepository, FastFoodsRepository>();
 
             services.AddSwaggerGen(c =>
             {
