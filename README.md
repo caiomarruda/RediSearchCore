@@ -39,7 +39,7 @@ docker run -e redisConnection="redisearch server" -p 80:80 caioarruda/redisearch
 ```
 
 ## How to build
-You need to install .Net Core 3.0 SDK:
+You need to install .Net Core 3.1 SDK:
 ```url
 https://dotnet.microsoft.com/download/dotnet-core
 ```
