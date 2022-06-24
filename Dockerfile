@@ -1,9 +1,9 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine AS base
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["RediSearchCore/RediSearchCore.csproj", "RediSearchCore/"]
 COPY ["RediSearchCore.Infrastructure/RediSearchCore.Infrastructure.csproj", "RediSearchCore.Infrastructure/"]
