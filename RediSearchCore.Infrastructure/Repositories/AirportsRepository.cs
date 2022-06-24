@@ -60,7 +60,7 @@ namespace RediSearchCore.Infrastructure.Repositories
             sch.AddTagField("Tag");
             sch.AddGeoField("GeoPoint");
 
-            return _client.CreateIndex(sch, Client.IndexOptions.Default);
+            return _client.CreateIndex(sch, new Client.ConfiguredIndexOptions(Client.IndexOptions.Default));
         }
 
         public void PushSampleData()
